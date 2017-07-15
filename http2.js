@@ -7,8 +7,8 @@
     var http2 = function (options){
         var defer=Q.defer(),req;
         if(options._http2 == 'https'){
+            process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
             _http = https;
-
         }else{
             _http = http;
         }
@@ -25,11 +25,13 @@
                 defer.resolve(html);
             })
             .on('error', function (err) {
+                console.log({'res': err});
                 defer.reject(err);
             });
             return defer.promise;
         });
         req.on('error',function(err){
+            console.log({'req': err});
             defer.reject(err);
         })
         if(options.opt.method == 'POST' && options.postData){
