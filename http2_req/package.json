@@ -1,0 +1,24 @@
+{
+  "name": "http2_req",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackdizhu/_node_modules.git"
+  },
+  "keywords": [
+    "gulp",
+    "webpack",
+    "http2_req"
+  ],
+  "author": "jackdizhu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackdizhu/_node_modules/issues"
+  },
+  "homepage": "https://github.com/jackdizhu/_node_modules#readme"
+}
