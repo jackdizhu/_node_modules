@@ -7,7 +7,7 @@ http2_get => 封装 http http2 get 请求
         U: 'https://github.com/search?l=JavaScript&o=desc&q='+searchT+'&s=stars&type=Repositories&utf8=%E2%9C%93',
         _http2: 'https'
     };
-    http2(httpsO).then(function (data) {
+    http2.get(httpsO).then(function (data) {
         console.log(data);
     });
 
@@ -43,6 +43,6 @@ http2 => 封装 http http2 get post 请求
         opt: options,
         postData: postData
     };
-    http2(httpsO).then(function (data) {
+    http2.req(httpsO).then(function (data) {
       console.log(data);
     });
