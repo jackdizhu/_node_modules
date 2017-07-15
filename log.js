@@ -8,13 +8,13 @@ var logger = function (Obj) {
         console.log('写入文件成功! ');
     });
 };
-var getBrowserInfo = require('./getBrowserInfo.js');
 
 var log = function (Obj) {
     var req = Obj.req || null;
     var _log = {};
-    if(req){
-      _log.ip = getBrowserInfo(req);
+    if(Obj.Browser){
+        var getBrowserInfo = require('./getBrowserInfo.js');
+        _log.ip = getBrowserInfo(req);
     }
     _log.err = Obj.err;
     _log.debug = Obj.debug;
