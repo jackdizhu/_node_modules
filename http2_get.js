@@ -8,11 +8,10 @@
         var defer=Q.defer();
         if(options._http2 == 'https'){
             _http = https;
-
         }else{
             _http = http;
         }
-        http.get(options.U, (res) => {
+        _http.get(options.U, (res) => {
             // 页面数据
             var html = '';
             var titles = [];
