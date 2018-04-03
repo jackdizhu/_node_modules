@@ -1,7 +1,7 @@
 
 # node_modules
 
-## json-model
+## json-api-model
 
 按 _dataM json 格式 将 api 返回数据格式等json 转成需要的 数据格式
 
