@@ -1,4 +1,5 @@
-import Utils from './utils';
+// import Utils from './utils';
+const Utils = require('./utils');
 
 const _init = function (_this, params) {
   return Utils.extend_init(_this._model, params, _this._prototype)

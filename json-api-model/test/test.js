@@ -1,4 +1,4 @@
-const __Model = require('../src/index');
+const __Model = require('../lib/index');
 let _dataM = new __Model({
   a: 0,
   b: '',

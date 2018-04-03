@@ -1,5 +1,5 @@
 
-export default {
+module.exports = {
   isObjFunc: function(name) {
     var toString = Object.prototype.toString
     return function() {

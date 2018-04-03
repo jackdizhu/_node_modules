@@ -6,8 +6,7 @@
   "scripts": {
     "build": "babel src/index.js -d build",
     "min": "babel build/index.js --minified --no-babelrc -o build/*.min.js",
-    "test": "mocha --compilers js:babel-core/register ./test/test.js",
-    "test2": "babel-node ./test/test2.js"
+    "test": "babel-node ./test/test.js"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -31,7 +30,6 @@
     "json-check",
     "json-model"
   ],
-  "author": "jackdizhu",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jackdizhu/_node_modules/issues"
