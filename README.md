@@ -3,7 +3,17 @@
 
 ## json-model
 
+按 _dataM json 格式 将 api 返回数据格式等json 转成需要的 数据格式
+
 ``` js
+// 数组包含对象时 采用 _dataM 中第一个数组元素
+[
+    {
+        a: 0
+    }
+]
+// 'false' 'FALSE' 转成 false
+// 'true' 'TRUE' 转成 true
 const __Model = require('../src/index');
 let _dataM = new __Model({
   a: 0,
