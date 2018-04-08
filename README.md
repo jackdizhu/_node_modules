@@ -1,6 +1,19 @@
 
 # node_modules
 
+## web_log
+
+``` js
+// 移动端 ^ 手势启用 console 配置 host 可以上报 error 错误
+import _log from 'web_log'
+_log({
+    host: 'http://127.0.0.1/errReport',
+    params: {
+      key: 'errReportKey'
+    }
+}, true)
+```
+
 ## json-api-model
 
 按 _dataM json 格式 将 api 返回数据格式等json 转成需要的 数据格式
