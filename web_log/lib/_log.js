@@ -1,29 +1,45 @@
 
-import VConsole from 'vconsole/dist/vconsole.min.js'
+const VConsole = require('./vconsole/dist/vconsole.min.js')
 
 module.exports = function (config, test) {
+  // let _config = {
+  //   host: config.host || 'http://127.0.0.1/errReport',
+  //   params: config.params || {
+  //     key: 'errReportKey'
+  //   }
+  // }
 
-  let _config = {
-    host: config.host || 'http://127.0.0.1/errReport',
-    params: config.params || {
-      key: 'errReportKey'
-    }
+  var isVConsole = false
+  var _logObj = {
+    store: []
   }
-  let _logs = []
+
   var _vConsole = null
 
-  window.onerror = function(msg, url, line, col, error) {
-    _logs.push(error.stack)
-
-    // 信息上报
-    let src = config.host + '?err=' +  error.stack
-    for (var i in config.params) {
-        if (config.params.hasOwnProperty(i)) {
-            src += '&' + i + '=' + config.params[i]
-        }
+  var methodList = ['log', 'info', 'warn', 'debug', 'error']
+  methodList.forEach(function (item) {
+    var method = console[item]
+    console[item] = function () {
+      _logObj.store.push({
+        logType: item,
+        logs: arguments
+      })
+      method.apply(console, arguments)
     }
-    new Image().src = src
+  })
+
+  // 不能捕获 Uncaught (in promise) TypeError:  promise 错误
+  window.onerror = function (msg, url, line, col, error) {
+    // 信息上报
+    // let src = _config.host + '?err=' + error.stack
+    // for (var i in _config.params) {
+    //   if (_config.params.hasOwnProperty(i)) {
+    //     src += '&' + i + '=' + _config.params[i]
+    //   }
+    // }
+    // new Image().src = src
     // _vConsole.show && _vConsole.show()
+    console.error(arguments)
     return true
   }
 
@@ -69,9 +85,12 @@ module.exports = function (config, test) {
       _vConsole && _vConsole.show()
     } else {
       _vConsole = new VConsole()
-
-      for (let i = 0; i < _logs.length; i++) {
-        console.error(_logs[i])
+      isVConsole = true
+      // 打印 加载 _vConsole 之前的打印信息
+      for (var i = 0; i < _logObj.store.length; i++) {
+        var item = _logObj.store[i]
+        item.noOrigin = true
+        _vConsole.pluginList.default.printLog(item)
       }
     }
   })
@@ -86,4 +105,3 @@ module.exports = function (config, test) {
     var c = d * a
   }
 }
-

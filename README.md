@@ -4,14 +4,10 @@
 ## web_log
 
 ``` js
-// 移动端 ^ 手势启用 console 配置 host 可以上报 error 错误
+// 移动端 ^ 手势启用 console 查看log 日志
+// 不能捕获 Uncaught (in promise) TypeError:  promise 错误
 import _log from 'web_log'
-_log({
-    host: 'http://127.0.0.1/errReport',
-    params: {
-      key: 'errReportKey'
-    }
-}, true)
+_log()
 ```
 
 ## json-api-model
